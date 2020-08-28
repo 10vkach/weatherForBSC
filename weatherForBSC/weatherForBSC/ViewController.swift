@@ -1,20 +1,27 @@
-//
-//  ViewController.swift
-//  weatherForBSC
-//
-//  Created by Dima Zareckiy on 27.08.2020.
-//  Copyright © 2020 Dima Zareckiy. All rights reserved.
-//
-
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, WeatherProviderDelegate {
+    
+//MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let weatherProvider = OpenWeatherMap()
+        weatherProvider.delegate = self
+        weatherProvider.currentWeather(inCity: "лондон")
     }
 
+//MARK: WeatherProviderDelegate
+    func currentWeatherLoaded(forCity city: String, weather: Weather) {
+        print(weather.temprature)
+        print(weather.desription)
+        print(city)
+    }
+    
+    func currentWeatherLoadingError(error: Error?, description: String) {
+        print("error -> ", error ?? "nil")
+        print("description -> ", description)
+    }
+    
 
 }
 

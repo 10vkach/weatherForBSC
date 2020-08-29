@@ -1,13 +1,13 @@
 import UIKit
 
-class ViewController: UIViewController, WeatherProviderDelegate {
+class ViewController: UIViewController, WeatherNetworkerDelegate {
     
 //MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        let weatherProvider = OpenWeatherMap()
-        weatherProvider.delegate = self
-        weatherProvider.currentWeather(inCity: "лондон")
+        let weatherNetworker = WeatherNetworker(provider: OpenWeatherMap())
+        weatherNetworker.delegate = self
+        weatherNetworker.currentWeather(inCity: "ижевск")
     }
 
 //MARK: WeatherProviderDelegate

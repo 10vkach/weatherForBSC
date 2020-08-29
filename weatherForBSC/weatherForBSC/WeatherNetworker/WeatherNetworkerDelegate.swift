@@ -1,6 +1,6 @@
 import Foundation
 
-protocol WeatherProviderDelegate: class {
+protocol WeatherNetworkerDelegate: class {
     func currentWeatherLoaded(forCity city: String, weather: Weather)
     func currentWeatherLoadingError(error: Error?, description: String)
 }

@@ -1,6 +1,5 @@
 import Foundation
 
 protocol WeatherProvider {
-    var delegate: WeatherProviderDelegate? { get set }
-    func currentWeather(inCity: String)
+    func currentWeatherURL(forCity: String) -> URL
 }

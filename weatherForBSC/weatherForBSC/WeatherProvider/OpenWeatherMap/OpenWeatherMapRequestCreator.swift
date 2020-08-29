@@ -11,7 +11,9 @@ class OpenWeatherMapRequestCreator {
             URLQueryItem(name: Constants.WeatherQueryItemNames.cityName,
                          value: cityName),
             URLQueryItem(name: Constants.WeatherQueryItemNames.appID,
-                         value: Constants.appID)
+                         value: Constants.Params.appID),
+            URLQueryItem(name: Constants.WeatherQueryItemNames.lang,
+                         value: Constants.Params.language)
         ]
         guard let url = components.url else { fatalError() }
         return url
@@ -19,7 +21,6 @@ class OpenWeatherMapRequestCreator {
 }
 
 fileprivate struct Constants {
-    static let appID = "68f6ee55f12aa56ef0c8b31f94cf26c0"
     static let scheme = "https"
     static let host = "api.openweathermap.org"
     
@@ -30,5 +31,11 @@ fileprivate struct Constants {
     struct WeatherQueryItemNames {
         static let cityName = "q"
         static let appID = "appid"
+        static let lang = "lang"
+    }
+    
+    struct Params {
+        static let appID = "68f6ee55f12aa56ef0c8b31f94cf26c0"
+        static let language = "ru"
     }
 }

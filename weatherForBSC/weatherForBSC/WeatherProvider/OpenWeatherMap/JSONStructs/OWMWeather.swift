@@ -5,7 +5,7 @@ struct OWMWeather: Decodable {
     let main: Main
     
     struct WeatherItem: Decodable {
-        let main: String
+        let description: String
     }
         
     struct Main: Decodable {

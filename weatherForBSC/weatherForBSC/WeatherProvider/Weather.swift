@@ -6,6 +6,6 @@ struct Weather {
     
     init(owm: OWMWeather) {
         temprature = owm.main.temp
-        desription = owm.weather.first?.main ?? ""
+        desription = owm.weather.first?.description ?? ""
     }
 }

@@ -38,6 +38,9 @@
                                         </constraints>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="list.dash" catalog="system"/>
+                                        <connections>
+                                            <action selector="configButtonTouch:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1CW-YO-fzN"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -72,6 +75,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="132" y="138.98050974512745"/>
+        </scene>
+        <!--Config View Controller-->
+        <scene sceneID="O4V-SJ-C9M">
+            <objects>
+                <viewController storyboardIdentifier="ConfigViewControllerID" id="E4e-vO-o8h" customClass="ConfigViewController" customModule="weatherForBSC" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Ff-Wq-I6r">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ODj-iG-qdF">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="E4e-vO-o8h" id="4qV-Od-F0d"/>
+                                    <outlet property="delegate" destination="E4e-vO-o8h" id="owf-5Q-7z9"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ODj-iG-qdF" firstAttribute="leading" secondItem="Oxh-wK-hlZ" secondAttribute="leading" id="6Iq-qf-GoB"/>
+                            <constraint firstItem="ODj-iG-qdF" firstAttribute="top" secondItem="Oxh-wK-hlZ" secondAttribute="top" id="7hi-S0-vPX"/>
+                            <constraint firstItem="Oxh-wK-hlZ" firstAttribute="bottom" secondItem="ODj-iG-qdF" secondAttribute="bottom" id="Gbd-0y-nvK"/>
+                            <constraint firstItem="Oxh-wK-hlZ" firstAttribute="trailing" secondItem="ODj-iG-qdF" secondAttribute="trailing" id="UCp-ed-WUx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Oxh-wK-hlZ"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="ODj-iG-qdF" id="k6P-WV-WWS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dyN-G8-b6a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1108" y="139"/>
         </scene>
     </scenes>
     <resources>

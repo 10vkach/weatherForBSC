@@ -5,7 +5,7 @@ class FirstViewController: UIViewController, WeatherNetworkerDelegate, UIScrollV
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     
-    var citys: [String] = ["ижевск", "Москва", "лондон"]
+    let model = WeatherList(citys: ["ижевск", "Москва", "лондон"], units: .farenheit)
     
 //MARK: LifeCycle
     override func viewDidLoad() {
@@ -24,14 +24,26 @@ class FirstViewController: UIViewController, WeatherNetworkerDelegate, UIScrollV
         super.viewDidAppear(animated)
         
         setScrollViewContent()
-        pageControl.numberOfPages = citys.count
+        pageControl.numberOfPages = model.places.count
     }
-
+    
+//MARK: Actions
+    @IBAction func configButtonTouch(_ sender: Any) {
+        guard let configViewController = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(identifier: "ConfigViewControllerID")
+            as? ConfigViewController else {
+                print("Ошибка при создании ConfigViewController")
+                return
+        }
+        
+        present(configViewController, animated: true)
+    }
+    
 //MARK: WeatherProviderDelegate
-    func currentWeatherLoaded(forCity city: String, weather: Weather) {
-        print(weather.temprature)
-        print(weather.desription)
-        print(city)
+    func currentWeatherLoaded(weather: Weather) {
+        print(weather.tempratureCelsius)
+        print(weather.description)
+        print(weather.city)
     }
     
     func currentWeatherLoadingError(error: Error?, description: String) {
@@ -47,19 +59,23 @@ class FirstViewController: UIViewController, WeatherNetworkerDelegate, UIScrollV
     	
 //MARK: Private
     private func setScrollViewContent() {
-        if citys.isEmpty {
+        if model.places.isEmpty {
             setScrollViewContentNoCitys()
             return
         }
-        scrollView.contentSize = CGSize(width: scrollView.bounds.width * CGFloat(citys.count),
+        scrollView.contentSize = CGSize(width: scrollView.bounds.width * CGFloat(model.places.count),
                                         height: scrollView.bounds.height)
         
-        for i in 0..<citys.count {
+        for i in 0..<model.places.count {
             let weatherViewFrame = CGRect(x: scrollView.bounds.width * CGFloat(i),
                                           y: 0,
                                           width: scrollView.bounds.width,
                                           height: scrollView.bounds.height)
-            scrollView.addSubview(WeatherView(frame: weatherViewFrame))
+            let weatherView = WeatherView(frame: weatherViewFrame,
+                                          weather: model.places[i],
+                                          inUnits: model.tempratureUnits)
+            
+            scrollView.addSubview(weatherView)
         }
     }
     

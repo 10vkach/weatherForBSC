@@ -18,7 +18,7 @@ class WeatherNetworker {
                     self.delegate?.currentWeatherLoadingError(error: nil, description: "Ошибка при попытке парса JSON")
                     return
                 }
-                self.delegate?.currentWeatherLoaded(forCity: city, weather: Weather(owm: owmWeather))
+                self.delegate?.currentWeatherLoaded(weather: Weather(forCity: city, owm: owmWeather))
             }
             if let errorSafe = error {
                 self.delegate?.currentWeatherLoadingError(error: errorSafe, description: "Ошибка при загрузке погоды")

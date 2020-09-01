@@ -180,6 +180,74 @@
             </objects>
             <point key="canvasLocation" x="1108" y="138.98050974512745"/>
         </scene>
+        <!--Add City View Controller-->
+        <scene sceneID="XcY-Bv-22h">
+            <objects>
+                <viewController storyboardIdentifier="AddCityViewControllerID" modalPresentationStyle="fullScreen" id="Rwn-lv-ZDh" customClass="AddCityViewController" customModule="weatherForBSC" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E2d-Wc-oTP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="21" translatesAutoresizingMaskIntoConstraints="NO" id="v2N-9x-dih">
+                                <rect key="frame" x="10" y="10" width="355" height="136"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Введите город" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iP6-6d-9mb">
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                        <color key="textColor" systemColor="systemGray2Color" red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Placeholder" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="hoy-HW-EhE">
+                                        <rect key="frame" x="0.0" y="51" width="355" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xmQ-fC-omt">
+                                        <rect key="frame" x="0.0" y="106" width="355" height="30"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y3d-a1-Paq">
+                                                <rect key="frame" x="0.0" y="0.0" width="172.5" height="30"/>
+                                                <state key="normal" title="OK"/>
+                                                <connections>
+                                                    <action selector="buttonOKTouch:" destination="Rwn-lv-ZDh" eventType="touchUpInside" id="wla-R6-iQz"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yif-ef-OPP">
+                                                <rect key="frame" x="182.5" y="0.0" width="172.5" height="30"/>
+                                                <state key="normal" title="Отмена"/>
+                                                <connections>
+                                                    <action selector="buttonCancelTouch:" destination="Rwn-lv-ZDh" eventType="touchUpInside" id="LNr-fm-Rnn"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="xmQ-fC-omt" secondAttribute="trailing" id="Igk-oh-rsZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="hoy-HW-EhE" secondAttribute="trailing" id="bH9-DV-YTR"/>
+                                    <constraint firstItem="iP6-6d-9mb" firstAttribute="leading" secondItem="v2N-9x-dih" secondAttribute="leading" id="bT1-Zm-QQE"/>
+                                    <constraint firstAttribute="trailing" secondItem="iP6-6d-9mb" secondAttribute="trailing" id="pES-4y-qcg"/>
+                                    <constraint firstItem="xmQ-fC-omt" firstAttribute="leading" secondItem="v2N-9x-dih" secondAttribute="leading" id="tvA-3E-ciX"/>
+                                    <constraint firstItem="hoy-HW-EhE" firstAttribute="leading" secondItem="v2N-9x-dih" secondAttribute="leading" id="yUV-Lz-LDO"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="tjx-az-6HE" firstAttribute="trailing" secondItem="v2N-9x-dih" secondAttribute="trailing" constant="10" id="R19-1c-v43"/>
+                            <constraint firstItem="v2N-9x-dih" firstAttribute="top" secondItem="tjx-az-6HE" secondAttribute="top" constant="10" id="ZzD-mQ-65a"/>
+                            <constraint firstItem="v2N-9x-dih" firstAttribute="leading" secondItem="tjx-az-6HE" secondAttribute="leading" constant="10" id="kWx-5Z-VdP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tjx-az-6HE"/>
+                    </view>
+                    <connections>
+                        <outlet property="textFieldCity" destination="hoy-HW-EhE" id="r2o-XF-WWt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fDo-ne-D4R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1991" y="139"/>
+        </scene>
     </scenes>
     <resources>
         <image name="list.dash" catalog="system" width="128" height="85"/>

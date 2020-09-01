@@ -15,13 +15,19 @@ class WeatherNetworker {
         session.dataTask(with: url) { (data, response, error) in
             if let dataSafe = data {
                 guard let owmWeather = try? JSONDecoder().decode(OWMWeather.self, from: dataSafe) else {
-                    self.delegate?.currentWeatherLoadingError(error: nil, description: "Ошибка при попытке парса JSON")
+                    DispatchQueue.main.async {
+                        self.delegate?.currentWeatherLoadingError(error: nil, description: "Ошибка при попытке парса JSON")
+                    }
                     return
                 }
-                self.delegate?.currentWeatherLoaded(weather: Weather(forCity: city, owm: owmWeather))
+                DispatchQueue.main.async {
+                    self.delegate?.currentWeatherLoaded(weather: Weather(forCity: city, owm: owmWeather))
+                }
             }
             if let errorSafe = error {
-                self.delegate?.currentWeatherLoadingError(error: errorSafe, description: "Ошибка при загрузке погоды")
+                DispatchQueue.main.async {
+                    self.delegate?.currentWeatherLoadingError(error: errorSafe, description: "Ошибка при загрузке погоды")
+                }
             }
         }.resume()
         

@@ -14,6 +14,12 @@ class ConfigViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         tableView.register(UINib(nibName: "CityTableViewCell", bundle: nil), forCellReuseIdentifier: CityTableViewCell.reuseID)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        tableView.reloadData()
+    }
 
 //MARK: TableView
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -53,6 +59,14 @@ class ConfigViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
 //MARK: Actions
     @IBAction func addCity(_ sender: Any) {
+        guard let addCityViewController = UIStoryboard(name: "Main", bundle: nil)
+            .instantiateViewController(identifier: "AddCityViewControllerID")
+            as? AddCityViewController else {
+                print("Ошибка при создании ConfigViewController")
+                return
+        }
+        addCityViewController.model = model
+        present(addCityViewController, animated: true)
     }
     
     @IBAction func firstUnitsSelected(_ sender: Any) {

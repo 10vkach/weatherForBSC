@@ -19,6 +19,7 @@
 		32A2178C24FD0E17007D3DA7 /* CityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A2178B24FD0E17007D3DA7 /* CityTableViewCell.xib */; };
 		32A2179024FD1439007D3DA7 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2178F24FD1439007D3DA7 /* Weather.swift */; };
 		32A2179224FD1BA8007D3DA7 /* WeatherList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2179124FD1BA8007D3DA7 /* WeatherList.swift */; };
+		32A2179924FE7BA0007D3DA7 /* AddCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A2179824FE7BA0007D3DA7 /* AddCityViewController.swift */; };
 		32D3D28624F7C8E3001BC248 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3D28524F7C8E3001BC248 /* AppDelegate.swift */; };
 		32D3D28824F7C8E3001BC248 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3D28724F7C8E3001BC248 /* SceneDelegate.swift */; };
 		32D3D28A24F7C8E3001BC248 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32D3D28924F7C8E3001BC248 /* FirstViewController.swift */; };
@@ -43,6 +44,7 @@
 		32A2178B24FD0E17007D3DA7 /* CityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityTableViewCell.xib; sourceTree = "<group>"; };
 		32A2178F24FD1439007D3DA7 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		32A2179124FD1BA8007D3DA7 /* WeatherList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherList.swift; sourceTree = "<group>"; };
+		32A2179824FE7BA0007D3DA7 /* AddCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCityViewController.swift; sourceTree = "<group>"; };
 		32D3D28224F7C8E3001BC248 /* weatherForBSC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weatherForBSC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32D3D28524F7C8E3001BC248 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32D3D28724F7C8E3001BC248 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 		32153F9224FAC14A0051D978 /* ViewControllelrs */ = {
 			isa = PBXGroup;
 			children = (
+				32A2179724FE7B80007D3DA7 /* AddCityViewController */,
 				325DF2FE24FD05C50010C6B2 /* ConfigViewController */,
 				325DF2FD24FD05AB0010C6B2 /* FirstViewController */,
 			);
@@ -146,6 +149,14 @@
 				32A2178F24FD1439007D3DA7 /* Weather.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		32A2179724FE7B80007D3DA7 /* AddCityViewController */ = {
+			isa = PBXGroup;
+			children = (
+				32A2179824FE7BA0007D3DA7 /* AddCityViewController.swift */,
+			);
+			path = AddCityViewController;
 			sourceTree = "<group>";
 		};
 		32D3D27924F7C8E3001BC248 = {
@@ -281,6 +292,7 @@
 				32D3D2A024F7F99B001BC248 /* WeatherProvider.swift in Sources */,
 				32A2179024FD1439007D3DA7 /* Weather.swift in Sources */,
 				32D3D29A24F7D887001BC248 /* OpenWeatherMapRequestCreator.swift in Sources */,
+				32A2179924FE7BA0007D3DA7 /* AddCityViewController.swift in Sources */,
 				325DF30024FD05E90010C6B2 /* ConfigViewController.swift in Sources */,
 				327804E124F926AA00594DA8 /* OWMWeather.swift in Sources */,
 				327804E524FA755500594DA8 /* WeatherNetworker.swift in Sources */,

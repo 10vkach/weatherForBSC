@@ -1,11 +1,11 @@
 import UIKit
 
-class FirstViewController: UIViewController, WeatherNetworkerDelegate, UIScrollViewDelegate {
+class FirstViewController: UIViewController, WeatherNetworkerDelegate, UIScrollViewDelegate, UIAdaptivePresentationControllerDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     
-    let model = WeatherList(citys: ["ижевск", "Москва", "лондон"], units: .farenheit)
+    let model = WeatherList(citys: ["ижевскижевскижевскижевск", "Москва", "Нижний Новгород"], units: .celsius)
     
 //MARK: LifeCycle
     override func viewDidLoad() {
@@ -24,7 +24,10 @@ class FirstViewController: UIViewController, WeatherNetworkerDelegate, UIScrollV
         super.viewDidAppear(animated)
         
         setScrollViewContent()
-        pageControl.numberOfPages = model.places.count
+    }
+
+    func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
+        setScrollViewContent()
     }
     
 //MARK: Actions
@@ -35,7 +38,8 @@ class FirstViewController: UIViewController, WeatherNetworkerDelegate, UIScrollV
                 print("Ошибка при создании ConfigViewController")
                 return
         }
-        
+        configViewController.model = model        
+        configViewController.presentationController?.delegate = self
         present(configViewController, animated: true)
     }
     
@@ -59,6 +63,8 @@ class FirstViewController: UIViewController, WeatherNetworkerDelegate, UIScrollV
     	
 //MARK: Private
     private func setScrollViewContent() {
+        scrollView.subviews.forEach({ $0.removeFromSuperview() })
+        
         if model.places.isEmpty {
             setScrollViewContentNoCitys()
             return
@@ -77,12 +83,17 @@ class FirstViewController: UIViewController, WeatherNetworkerDelegate, UIScrollV
             
             scrollView.addSubview(weatherView)
         }
+        pageControl.numberOfPages = model.places.count
     }
     
     private func setScrollViewContentNoCitys() {
-        scrollView.addSubview(NoCityView(frame: scrollView.bounds))
-        scrollView.contentSize = CGSize(width: scrollView.bounds.width,
-                                        height: scrollView.bounds.height)
+        let noCitysFrame = CGRect(x: 0,
+                                  y: 0,
+                                  width: scrollView.bounds.width,
+                                  height: scrollView.bounds.height)
+        scrollView.addSubview(NoCityView(frame: noCitysFrame))
+        scrollView.contentSize = noCitysFrame.size
+        pageControl.numberOfPages = 1
     }
     
 }

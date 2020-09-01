@@ -1,9 +1,16 @@
-//
-//  CityTableViewCell.swift
-//  weatherForBSC
-//
-//  Created by Dima Zareckiy on 31.08.2020.
-//  Copyright © 2020 Dima Zareckiy. All rights reserved.
-//
-
 import Foundation
+import UIKit
+
+class CityTableViewCell: UITableViewCell {
+    static let reuseID = "CityTableViewCell"
+    
+    @IBOutlet weak var labelCity: UILabel!
+    @IBOutlet weak var labelTemprature: UILabel!
+    
+    func setUI(with weather: Weather, tempretureUnits units: TempratureUnits) {
+        labelCity.text = weather.city
+        labelTemprature.text = weather.temprature(inUnits: units)
+        contentView.layer.borderColor = CGColor(genericGrayGamma2_2Gray: 0.5, alpha: 1)
+        contentView.layer.borderWidth = 1
+    }
+}

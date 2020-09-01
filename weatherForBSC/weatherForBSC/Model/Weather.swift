@@ -20,9 +20,9 @@ struct Weather {
     func temprature(inUnits units: TempratureUnits) -> String {
         switch units {
         case .celsius:
-            return "\(tempratureCelsius) °C"
+            return "\(tempratureCelsius)°C"
         case .farenheit:
-            return "451 °F"
+            return "451°F"
         }
     }
 }

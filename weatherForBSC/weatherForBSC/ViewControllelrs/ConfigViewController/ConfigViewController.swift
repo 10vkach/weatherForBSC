@@ -47,7 +47,7 @@ class ConfigViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let deleteAction = UIContextualAction(
             style: .destructive,
-            title: "Delete",
+            title: "Удалить",
             handler: { _, _, complete in
                 self.model?.places.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -111,5 +111,9 @@ class ConfigViewController: UIViewController, UITableViewDelegate, UITableViewDa
         label.font = UIFont.systemFont(ofSize: 30.0)
         label.textColor = .systemGray
         return label
+    }
+    
+    deinit {
+        print("deinit -> ConfigViewController")
     }
 }

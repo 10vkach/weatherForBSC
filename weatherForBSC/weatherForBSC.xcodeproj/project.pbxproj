@@ -147,6 +147,8 @@
 			children = (
 				32A2179124FD1BA8007D3DA7 /* WeatherList.swift */,
 				32A2178F24FD1439007D3DA7 /* Weather.swift */,
+				327804E624FA80C300594DA8 /* WeatherNetworker */,
+				32D3D29E24F7F982001BC248 /* WeatherProvider */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -180,8 +182,6 @@
 			children = (
 				32A2178D24FD1422007D3DA7 /* Model */,
 				32153F9224FAC14A0051D978 /* ViewControllelrs */,
-				327804E624FA80C300594DA8 /* WeatherNetworker */,
-				32D3D29E24F7F982001BC248 /* WeatherProvider */,
 				32D3D28524F7C8E3001BC248 /* AppDelegate.swift */,
 				32D3D28B24F7C8E3001BC248 /* Main.storyboard */,
 				32D3D28E24F7C8E6001BC248 /* Assets.xcassets */,

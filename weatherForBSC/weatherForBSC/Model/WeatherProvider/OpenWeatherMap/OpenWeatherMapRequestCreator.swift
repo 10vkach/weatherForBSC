@@ -43,7 +43,7 @@ fileprivate struct Constants {
     
     struct Params {
         static let appID = "68f6ee55f12aa56ef0c8b31f94cf26c0"
-        static let language = Locale.current.languageCode ?? "ru"
+        static let language = "ru"
         static let units = "metric"
     }
 }

@@ -51,4 +51,8 @@ class AddCityViewController: UIViewController, WeatherNetworkerDelegate {
           alertError.dismiss(animated: true, completion: nil)
         }
     }
+    
+    deinit {
+        print("deinit -> AddCityViewController")
+    }
 }

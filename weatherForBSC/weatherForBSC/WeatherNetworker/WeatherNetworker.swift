@@ -3,7 +3,7 @@ import Foundation
 class WeatherNetworker {
     
     weak var delegate: WeatherNetworkerDelegate?
-    let weatherProvider: WeatherProvider
+    private let weatherProvider: WeatherProvider
     
     init(provider: WeatherProvider) {
         weatherProvider = provider
@@ -14,14 +14,14 @@ class WeatherNetworker {
         let url = weatherProvider.currentWeatherURL(forCity: city)
         session.dataTask(with: url) { (data, response, error) in
             if let dataSafe = data {
-                guard let owmWeather = try? JSONDecoder().decode(OWMWeather.self, from: dataSafe) else {
+                guard let weather = self.weatherProvider.parseCurrentWeather(data: dataSafe) else {
                     DispatchQueue.main.async {
                         self.delegate?.currentWeatherLoadingError(error: nil, description: "Ошибка при попытке парса JSON")
                     }
                     return
                 }
                 DispatchQueue.main.async {
-                    self.delegate?.currentWeatherLoaded(weather: Weather(forCity: city, owm: owmWeather))
+                    self.delegate?.currentWeatherLoaded(weather: weather)
                 }
             }
             if let errorSafe = error {
@@ -30,7 +30,5 @@ class WeatherNetworker {
                 }
             }
         }.resume()
-        
-        return
     }
 }

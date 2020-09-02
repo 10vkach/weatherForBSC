@@ -2,17 +2,20 @@ import Foundation
 
 struct Weather {
     let city: String
+    let cityID: Int
     let tempratureCelsius: Double
     let description: String
     
-    init(forCity city: String, owm: OWMWeather) {
-        self.city = city
+    init(owm: OWMWeather) {
+        self.city = owm.name
+        cityID = owm.id
         tempratureCelsius = owm.main.temp
         description = owm.weather.first?.description ?? ""
     }
     
     init(city: String) {
         self.city = city
+        cityID = 0
         tempratureCelsius = 0
         description = "Не определена"
     }
@@ -22,7 +25,16 @@ struct Weather {
         case .celsius:
             return "\(tempratureCelsius)°C"
         case .farenheit:
-            return "451°F"
+            let f = 1.8 * tempratureCelsius + 32
+            return "\(f)°"
+//        case .kelvin:
+//            return "\(tempratureCelsius - 273.15)°"
         }
     }
+}
+
+enum TempratureUnits {
+    case celsius
+    case farenheit
+//    case kelvin
 }

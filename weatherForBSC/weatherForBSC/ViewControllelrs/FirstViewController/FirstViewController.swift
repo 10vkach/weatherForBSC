@@ -5,7 +5,7 @@ class FirstViewController: UIViewController, WeatherNetworkerDelegate, UIScrollV
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     
-    let model = WeatherList(citys: ["ижевскижевскижевскижевск", "Москва", "Нижний Новгород"], units: .celsius)
+    let model = WeatherList(citys: ["Нижний Новгород", "Ижевск", "Москва"], units: .celsius)
     
 //MARK: LifeCycle
     override func viewDidLoad() {
@@ -14,16 +14,14 @@ class FirstViewController: UIViewController, WeatherNetworkerDelegate, UIScrollV
         scrollView.layer.borderColor = CGColor(genericGrayGamma2_2Gray: 0.5, alpha: 1)
         scrollView.layer.borderWidth = 1
         
-        let weatherNetworker = WeatherNetworker(provider: OpenWeatherMap())
-        weatherNetworker.delegate = self
-        weatherNetworker.currentWeather(inCity: "ижевск")
-        
+        model.weatherNetworker.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         setScrollViewContent()
+        model.updateAllWeather()
     }
 
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
@@ -95,6 +93,5 @@ class FirstViewController: UIViewController, WeatherNetworkerDelegate, UIScrollV
         scrollView.contentSize = noCitysFrame.size
         pageControl.numberOfPages = 1
     }
-    
 }
 

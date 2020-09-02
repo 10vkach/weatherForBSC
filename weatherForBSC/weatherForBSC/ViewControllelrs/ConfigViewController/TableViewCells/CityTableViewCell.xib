@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityTableViewCell" rowHeight="107" id="ScX-sj-ZV9" customClass="CityTableViewCell" customModule="weatherForBSC" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="520" height="107"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ScX-sj-ZV9" id="T0R-QR-x2L">
+                <rect key="frame" x="0.0" y="0.0" width="520" height="107"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="beV-YJ-u1u">
+                        <rect key="frame" x="10" y="0.0" width="500" height="107"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Нижний Новгород" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWr-58-K6L">
+                                <rect key="frame" x="0.0" y="0.0" width="251" height="107"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="0 °С" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Az1-yu-PDl">
+                                <rect key="frame" x="261" y="0.0" width="239" height="107"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstItem="beV-YJ-u1u" firstAttribute="top" secondItem="T0R-QR-x2L" secondAttribute="top" id="BOX-QO-7bD"/>
+                    <constraint firstAttribute="bottom" secondItem="beV-YJ-u1u" secondAttribute="bottom" id="Ba1-PC-smG"/>
+                    <constraint firstAttribute="trailing" secondItem="beV-YJ-u1u" secondAttribute="trailing" constant="10" id="j5m-4W-40Q"/>
+                    <constraint firstItem="beV-YJ-u1u" firstAttribute="leading" secondItem="T0R-QR-x2L" secondAttribute="leading" constant="10" id="mfl-Y1-2xP"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="labelCity" destination="dWr-58-K6L" id="gIm-bx-H4X"/>
+                <outlet property="labelTemprature" destination="Az1-yu-PDl" id="XbS-h5-FU1"/>
+            </connections>
+            <point key="canvasLocation" x="2.8985507246376816" y="80.691964285714278"/>
+        </tableViewCell>
+    </objects>
+</document>

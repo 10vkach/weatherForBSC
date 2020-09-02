@@ -3,16 +3,18 @@ import UIKit
 
 class ConfigViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var stackViewTempretureUnits: UIStackView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var buttonUnitsFirst: UIButton!
-    @IBOutlet weak var buttonUnitsSecond: UIButton!
     
     var model: WeatherList?
+    
+    private var buttonsTempratureUnits: [UIButton] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.register(UINib(nibName: "CityTableViewCell", bundle: nil), forCellReuseIdentifier: CityTableViewCell.reuseID)
+        setStackViewTempratureUnits()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -69,17 +71,45 @@ class ConfigViewController: UIViewController, UITableViewDelegate, UITableViewDa
         present(addCityViewController, animated: true)
     }
     
-    @IBAction func firstUnitsSelected(_ sender: Any) {
-        buttonUnitsFirst.setTitleColor(.gray, for: .normal)
-        buttonUnitsSecond.setTitleColor(.systemGray3, for: .normal)
-        model?.tempratureUnits = .celsius
+    @objc func buttonAction(sender: UIButton!) {
+        buttonsTempratureUnits.forEach({ $0.setTitleColor(.systemGray3, for: .normal) })
+        sender.setTitleColor(.systemGray, for: .normal)
+        let selectedUnits = TempratureUnits.allCases[sender.tag]
+        model?.tempratureUnits = selectedUnits
         tableView.reloadData()
     }
     
-    @IBAction func secondUnitsSelected(_ sender: Any) {
-        buttonUnitsFirst.setTitleColor(.systemGray3, for: .normal)
-        buttonUnitsSecond.setTitleColor(.gray, for: .normal)
-        model?.tempratureUnits = .farenheit
-        tableView.reloadData()
+//MARK: Private
+    private func setStackViewTempratureUnits() {
+        var allUnits = TempratureUnits.allCases
+        let firstUnits = allUnits.removeFirst()
+        stackViewTempretureUnits.addArrangedSubview(createButtonTempratureUnits(forUnits: firstUnits, withTag: 0))
+        for i in 0..<allUnits.count {
+            stackViewTempretureUnits.addArrangedSubview(createLabelSplitter())
+            stackViewTempretureUnits.addArrangedSubview(createButtonTempratureUnits(forUnits: allUnits[i], withTag: i + 1))
+        }
+    }
+    
+    private func createButtonTempratureUnits(forUnits units: TempratureUnits, withTag tag: Int) -> UIButton {
+        let button = UIButton()
+        button.setTitle("\(units.rawValue)", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 30.0)
+        if model?.tempratureUnits == units {
+            button.setTitleColor(.systemGray, for: .normal)
+        } else {
+            button.setTitleColor(.systemGray3, for: .normal)
+        }
+        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        button.tag = tag
+        buttonsTempratureUnits.append(button)
+        return button
+    }
+    
+    private func createLabelSplitter() -> UILabel {
+        let label = UILabel()
+        label.text = "/"
+        label.font = UIFont.systemFont(ofSize: 30.0)
+        label.textColor = .systemGray
+        return label
     }
 }

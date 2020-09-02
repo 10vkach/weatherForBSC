@@ -23,18 +23,18 @@ struct Weather {
     func temprature(inUnits units: TempratureUnits) -> String {
         switch units {
         case .celsius:
-            return "\(tempratureCelsius)°C"
+            return "\(tempratureCelsius)°"
         case .farenheit:
             let f = 1.8 * tempratureCelsius + 32
             return "\(f)°"
-//        case .kelvin:
-//            return "\(tempratureCelsius - 273.15)°"
+        case .kelvin:
+            return "\(tempratureCelsius - 273.15)°"
         }
     }
 }
 
-enum TempratureUnits {
-    case celsius
-    case farenheit
-//    case kelvin
+enum TempratureUnits: String, CaseIterable {
+    case celsius = "°C"
+    case farenheit = "°F"
+    case kelvin = "°K"
 }

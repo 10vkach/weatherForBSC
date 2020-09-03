@@ -1,11 +1,11 @@
 import UIKit
 
-class FirstViewController: UIViewController, WeatherNetworkerDelegate, UIScrollViewDelegate, UIAdaptivePresentationControllerDelegate {
+class FirstViewController: UIViewController, UIScrollViewDelegate, UIAdaptivePresentationControllerDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
     
-    let model = WeatherList(citys: ["Нижний Новгород", "Ижевск", "Москва"], units: .celsius)
+    let model = WeatherList(citys: [], units: .celsius)
     
 //MARK: LifeCycle
     override func viewDidLoad() {
@@ -14,14 +14,12 @@ class FirstViewController: UIViewController, WeatherNetworkerDelegate, UIScrollV
         scrollView.layer.borderColor = CGColor(genericGrayGamma2_2Gray: 0.5, alpha: 1)
         scrollView.layer.borderWidth = 1
         
-        model.weatherNetworker.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         setScrollViewContent()
-        model.updateAllWeather()
     }
 
     func presentationControllerDidDismiss(_ presentationController: UIPresentationController) {
@@ -31,7 +29,7 @@ class FirstViewController: UIViewController, WeatherNetworkerDelegate, UIScrollV
 //MARK: Actions
     @IBAction func configButtonTouch(_ sender: Any) {
         guard let configViewController = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(identifier: "ConfigViewControllerID")
+            .instantiateViewController(identifier: ConfigViewController.storyboardID)
             as? ConfigViewController else {
                 print("Ошибка при создании ConfigViewController")
                 return
@@ -39,18 +37,6 @@ class FirstViewController: UIViewController, WeatherNetworkerDelegate, UIScrollV
         configViewController.model = model        
         configViewController.presentationController?.delegate = self
         present(configViewController, animated: true)
-    }
-    
-//MARK: WeatherProviderDelegate
-    func currentWeatherLoaded(weather: Weather) {
-        print(weather.tempratureCelsius)
-        print(weather.description)
-        print(weather.city)
-    }
-    
-    func currentWeatherLoadingError(error: Error?, description: String) {
-        print("error -> ", error ?? "nil")
-        print("description -> ", description)
     }
     
 //MARK: ScrollViewDelegate

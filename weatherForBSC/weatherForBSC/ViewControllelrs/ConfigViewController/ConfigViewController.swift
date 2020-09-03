@@ -1,7 +1,9 @@
 import Foundation
 import UIKit
 
-class ConfigViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ConfigViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+    
+    static let storyboardID = "ConfigViewControllerID"
     
     @IBOutlet weak var stackViewTempretureUnits: UIStackView!
     @IBOutlet weak var tableView: UITableView!
@@ -62,7 +64,7 @@ class ConfigViewController: UIViewController, UITableViewDelegate, UITableViewDa
 //MARK: Actions
     @IBAction func addCity(_ sender: Any) {
         guard let addCityViewController = UIStoryboard(name: "Main", bundle: nil)
-            .instantiateViewController(identifier: "AddCityViewControllerID")
+            .instantiateViewController(identifier: AddCityViewController.storyboardID)
             as? AddCityViewController else {
                 print("Ошибка при создании ConfigViewController")
                 return

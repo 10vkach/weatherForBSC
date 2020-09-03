@@ -2,9 +2,14 @@ import Foundation
 import UIKit
 
 class AddCityViewController: UIViewController, WeatherNetworkerDelegate {
+    static let storyboardID = "AddCityViewControllerID"
     
     @IBOutlet weak var textFieldCity: UITextField!
     var model: WeatherList?
+    
+    override func viewDidLoad() {
+        model?.weatherNetworker.delegate = self
+    }
     
 //MARK: Actions
     @IBAction func buttonCancelTouch(_ sender: Any) {
@@ -14,9 +19,7 @@ class AddCityViewController: UIViewController, WeatherNetworkerDelegate {
     @IBAction func buttonOKTouch(_ sender: Any) {
         guard let newCityName = textFieldCity.text else { return }
         
-        let weatherNetworker = WeatherNetworker(provider: OpenWeatherMap())
-        weatherNetworker.delegate = self
-        weatherNetworker.currentWeather(inCity: newCityName)
+        model?.weatherNetworker.currentWeather(inCity: newCityName)
     }
     
 //MARK: WeatherNetworkerDelegate
@@ -37,7 +40,7 @@ class AddCityViewController: UIViewController, WeatherNetworkerDelegate {
         present(alertError, animated: true)
         let when = DispatchTime.now() + 2
         DispatchQueue.main.asyncAfter(deadline: when){
-          alertError.dismiss(animated: true, completion: nil)
+            alertError.dismiss(animated: true, completion: nil)
         }
     }
     
@@ -48,7 +51,7 @@ class AddCityViewController: UIViewController, WeatherNetworkerDelegate {
         present(alertError, animated: true)
         let when = DispatchTime.now() + 2
         DispatchQueue.main.asyncAfter(deadline: when){
-          alertError.dismiss(animated: true, completion: nil)
+            alertError.dismiss(animated: true, completion: nil)
         }
     }
     

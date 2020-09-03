@@ -6,6 +6,7 @@ class FirstViewController: UIViewController, WeatherNetworkerDelegate, UIScrollV
     @IBOutlet weak var pageControl: UIPageControl!
     
     let model = WeatherList(citys: ["Нижний Новгород", "Ижевск", "Москва"], units: .celsius)
+//    let model = WeatherList(citys: ["520555", "554840", "1496153"], units: .celsius)
     
 //MARK: LifeCycle
     override func viewDidLoad() {
@@ -15,6 +16,7 @@ class FirstViewController: UIViewController, WeatherNetworkerDelegate, UIScrollV
         scrollView.layer.borderWidth = 1
         
         model.weatherNetworker.delegate = self
+        print(OpenWeatherMapRequestCreator().group(cityIDs: [520555, 554840, 1496153]))
     }
     
     override func viewDidAppear(_ animated: Bool) {
